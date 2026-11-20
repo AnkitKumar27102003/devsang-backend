@@ -11,5 +11,8 @@
     "Javascript"
   ],
   "author": "Ankit Kumar",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
 }
