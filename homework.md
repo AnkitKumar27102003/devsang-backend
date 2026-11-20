@@ -1,0 +1,12 @@
+- Created a repo
+- initialize the repository
+- node_modules, package.json, package-lock.json
+- install express
+- Creates a Server
+- Listen to port 7777
+- Write request handlers for /test , /hello
+- install nodemon and update scripts inside    package.josn
+- What are dependencies
+- what is the use -g while npm install -g nodemon
+- Diff between ^ and ~
+
