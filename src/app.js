@@ -3,33 +3,29 @@ const express = require("express");
 
 const app = express()
 
-// why we need middlewares>  here is the reason
-// here we are authorizing admin for both routes but you can see authorization cheking code is same for all
-// but we dont want like this to repeat code, we want to make it simpler so we will use middlewares
-
-app.get("/admin/getAllData", (req,res) => {
-    const token = "xyz"
+//we can use app.use for all routes starting with /admin and will write authorization code here and will reause everywhere for admin
+app.use("/admin", (req,res,next) => {
+    const token = "xyez"
 
     const isAdminAuthorized = token === "xyz"
-    if(isAdminAuthorized) {
-        res.send("All data sent")
-    }
-    else{
+    if(!isAdminAuthorized) {
         res.status(401).send("Unauthorized request")
     }
+    else{
+        next()
+    }
+
+})
+
+app.get("/admin/getAllData", (req,res) => {
+    res.send("all data sent")
 })
 
 app.get("/admin/deleteAllData", (req,res) => {
-    const token = "xyzt"
-
-    const isAdminAuthorized = token === "xyz"
-    if(isAdminAuthorized) {
-        res.send("delete data sent")
-    }
-    else{
-        res.status(401).send("Unauthorized request")
-    }
+    res.send("delete data sent")
 })
+
+//here we have written simpler code by using middleware and we doesnt have to repeat code
 
 
 app.listen(3000, ()=> {
