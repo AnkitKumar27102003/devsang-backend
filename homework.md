@@ -30,4 +30,6 @@ S02 EP03
 - next()
 - next function and errors along with the code
 - app.use("/route", rh, [rh2 , rh3], rh4, rh5);
-- 
+- what is middlewares and why do we need middlewares
+- how expressjs basically handles the reqeusts behind the scene
+- diff bw app.use vs app.all;

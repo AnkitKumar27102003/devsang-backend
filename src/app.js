@@ -3,36 +3,33 @@ const express = require("express");
 
 const app = express()
 
-// app.use("/user", (req,res) => {
-//     ye infinte sending reqest me phas jayega because we are not sending any response to the client
-// })
+// why we need middlewares>  here is the reason
+// here we are authorizing admin for both routes but you can see authorization cheking code is same for all
+// but we dont want like this to repeat code, we want to make it simpler so we will use middlewares
 
-// app.use("/user", (req,res) => {
-//      console.log("i am a user") this also go in infinite loop
-// })
+app.get("/admin/getAllData", (req,res) => {
+    const token = "xyz"
 
+    const isAdminAuthorized = token === "xyz"
+    if(isAdminAuthorized) {
+        res.send("All data sent")
+    }
+    else{
+        res.status(401).send("Unauthorized request")
+    }
+})
 
-app.use("/user", (req,res, next) => {
-    // res.send("this will also go into the loop")
-    // res.send("1st response")
-    console.log("first handler")
-    next()
-},
-(req,res,next) => {
-    console.log("second handler")
-    // res.send("2nd response")
-    next()
-},
-[(req,res) => {
-    console.log("third handler")
-    next()
-},
-(req,res) => {
-    res.send("4th response")
-    console.log("Forth handler")
-}]
-)
+app.get("/admin/deleteAllData", (req,res) => {
+    const token = "xyzt"
 
+    const isAdminAuthorized = token === "xyz"
+    if(isAdminAuthorized) {
+        res.send("delete data sent")
+    }
+    else{
+        res.status(401).send("Unauthorized request")
+    }
+})
 
 
 app.listen(3000, ()=> {
