@@ -26,3 +26,8 @@ S02 EP03
 - Reading the query params in the routes
 - Reading the dynamic routes
 
+- Multiple Route Handlers - Play with the code
+- next()
+- next function and errors along with the code
+- app.use("/route", rh, [rh2 , rh3], rh4, rh5);
+- 
