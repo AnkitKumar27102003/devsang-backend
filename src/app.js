@@ -1,17 +1,31 @@
 const express = require("express");
 
-const {adminAuth} = require("./middlewares/auth")
-
-
 const app = express()
 
-app.get("/admin/getAllData", adminAuth ,(req,res) => {
-    res.send("all data sent")
-})
+app.get("/user", (req, res) => {
+    try {
+        throw new Error("Something went wrong");
 
-app.get("/admin/deleteAllData",adminAuth, (req,res) => {
-    res.send("delete data sent")
-})
+    } catch (err) {
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+app.get("/user", (req, res, next) => {
+    try {
+        throw new Error("User not found");
+    } catch (err) {
+        next(err);
+    }
+});
+
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    res.status(500).send("Something went wrong");
+});
+
+
 
 
 

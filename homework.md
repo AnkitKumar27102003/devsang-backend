@@ -33,3 +33,7 @@ S02 EP03
 - what is middlewares and why do we need middlewares
 - how expressjs basically handles the reqeusts behind the scene
 - diff bw app.use vs app.all;
+- write dummy middlewares for routes
+- Error handling in middlewares or using try catch
+
+
