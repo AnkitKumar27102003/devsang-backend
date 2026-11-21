@@ -1,3 +1,6 @@
+
+S02 EP03
+
 - Created a repo
 - initialize the repository
 - node_modules, package.json, package-lock.json
@@ -9,4 +12,17 @@
 - What are dependencies
 - what is the use -g while npm install -g nodemon
 - Diff between ^ and ~
+
+- Initialize git
+- .gitignore
+- Create a remote repo on github
+- Push all code to remote origin
+- play with routes and route extensions 
+- order and sequence
+- Install Postman app and make a workspace/Collection > test api call
+- Write logic to handle GET, POST, PATCH, DELETE API Calls and test them on postman
+- Explore routing and use of ?, +, (), *, in the routes
+- use of regex in routes /a/, /.*fly$/
+- Reading the query params in the routes
+- Reading the dynamic routes
 
