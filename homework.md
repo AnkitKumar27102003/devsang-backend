@@ -36,4 +36,8 @@ S02 EP03
 - write dummy middlewares for routes
 - Error handling in middlewares or using try catch
 
+- Create a database/cluster on mongodb official website (Mongodb Atlas)
+- Install Mongoose library
+- Connect your application to the database
+- Call the connectDB function and connect to database before starting application on listen 7777
 
