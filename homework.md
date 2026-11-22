@@ -45,4 +45,8 @@ S02 EP03
 - Push some documents using API calls from postman
 - Error Handling
 
+- Diff btw JSON vs Javascript object
+- Add the express.json middleware in our app
+- Make you API dynamic to receive data from the end user
+
 
