@@ -40,4 +40,9 @@ S02 EP03
 - Install Mongoose library
 - Connect your application to the database
 - Call the connectDB function and connect to database before starting application on listen 7777
+- Create a User Schema & User model
+- Create a POST /signup API to add data to database 
+- Push some documents using API calls from postman
+- Error Handling
+
 
