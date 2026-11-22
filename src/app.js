@@ -14,8 +14,13 @@ app.post("/signup", async (req, res) => {
         password : "Ankit@123"
     })
 
-    await user.save();
-    res.send("Signup succesfully")
+    try {
+        await user.save();
+        res.send("Signup succesfully")
+    }
+    catch(err) {
+        res.status(400).send("Something went wrong" + err.message)
+    }
 })
 
 
