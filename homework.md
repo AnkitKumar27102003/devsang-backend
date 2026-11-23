@@ -52,6 +52,12 @@ S02 EP03
 - Get API user by email
 - Get All the user from db
 - Create an API Get user By id
+- Create and API to delete user
+- Create an API to Update 
+- Explore mongoose doc
+- What are options 
+- Update with email id
+
 
 
 

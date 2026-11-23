@@ -70,10 +70,53 @@ app.get("/feed",async (req,res) => {
         }
     }
     catch(err) {
-        res.status(401).send("Something went wrong")
+        res.status(500).send("Something went wrong")
     }
 })
 
+//Delete user by id
+app.delete("/user/:id", async (req, res) => {
+
+    const userId = req.params.id;
+
+    try {
+        
+
+        if (await User.findByIdAndDelete(userId)) {
+            res.send("User deleted successfully");
+        }
+        else {
+            res.status(404).send("User not found");
+        }
+
+    }
+    catch (err) {
+        res.status(500).send("Something went wrong");
+    }
+
+});
+
+//update user
+app.patch("/user",async (req,res) => {
+    const data = req.body
+    const userId = req.body.userId
+
+    try {
+
+        if(await User.findByIdAndUpdate(userId, data)){
+            res.send("Update Successfully")
+        }
+        else{
+            res.send("user not found")
+        }
+
+    }
+    catch(err) {
+        res.status(500).send("Something went wrong");
+
+    }
+
+})
 
 connectDB().then(() => {
     console.log("Database is connected")
