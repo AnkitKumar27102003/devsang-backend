@@ -48,5 +48,11 @@ S02 EP03
 - Diff btw JSON vs Javascript object
 - Add the express.json middleware in our app
 - Make you API dynamic to receive data from the end user
+- User.FindOne which data will return if mutiple present
+- Get API user by email
+- Get All the user from db
+- Create an API Get user By id
+
+
 
 
