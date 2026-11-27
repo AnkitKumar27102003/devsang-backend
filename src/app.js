@@ -97,26 +97,48 @@ app.delete("/user/:id", async (req, res) => {
 });
 
 //update user
-app.patch("/user",async (req,res) => {
-    const data = req.body
-    const userId = req.body.userId
+app.patch("/user/:userId", async (req, res) => {
+    const data = req.body;
+    const userId = req.params.userId;
 
     try {
+        console.log("User ID:", userId);
+        console.log("Data:", data);
 
-        if(await User.findByIdAndUpdate(userId, data)){
-            res.send("Update Successfully")
+        const ALLOWED_UPDATES = ["skills", "age", "gender"];
+
+        const isAllowedUpdate = Object.keys(data).every((k) =>
+            ALLOWED_UPDATES.includes(k)
+        );
+
+        if (!isAllowedUpdate) {
+            return res.status(400).send("Unable to update");
         }
-        else{
-            res.send("user not found")
+
+        const user = await User.findByIdAndUpdate(
+            userId,
+            data,
+            {
+                runValidators: true,
+                new: true,
+
+            }
+        );
+
+        console.log("Updated User:", user);
+
+        if (!user) {
+            return res.status(404).send("User not found");
         }
 
-    }
-    catch(err) {
-        res.status(500).send("Something went wrong");
+        res.send("User updated successfully");
 
+    } catch (err) {
+        console.error("PATCH ERROR:", err);
+        res.status(500).send(err.message);
     }
+});
 
-})
 
 connectDB().then(() => {
     console.log("Database is connected")

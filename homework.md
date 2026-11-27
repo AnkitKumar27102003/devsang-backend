@@ -58,6 +58,15 @@ S02 EP03
 - What are options 
 - Update with email id
 
+- Explore schemaType options from the documentation
+- add required, unique, lowercase, min, minLength, trim, 
+- Add default
+- create a custom validate function for gender 
+- improve the DB Schema - PUT all appropriate and validations on each field
+- add timestamps to the user schema 
+- API level validation on patch request & signup post api
+
+
 
 
 
