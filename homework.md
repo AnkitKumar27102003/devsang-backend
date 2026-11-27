@@ -65,7 +65,7 @@ S02 EP03
 - improve the DB Schema - PUT all appropriate and validations on each field
 - add timestamps to the user schema 
 - API level validation on patch request & signup post api
-
+- install validator and explore validator
 
 
 
