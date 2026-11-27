@@ -67,6 +67,9 @@ S02 EP03
 - API level validation on patch request & signup post api
 - install validator and explore validator
 
+- validate data in signup API
+- install bcrypt
+- Create a passwordHash using bcrypt and save user password
 
 
 
