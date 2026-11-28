@@ -1,5 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcrypt")
+const cookieParser = require('cookie-parser')
+var jwt = require('jsonwebtoken');
 const connectDB = require("./config/database")
 const User = require("./models/user")
 const { signupValidation } = require("./utils/validation")
@@ -8,6 +10,7 @@ const { signupValidation } = require("./utils/validation")
 const app = express()
 
 app.use(express.json())
+app.use(cookieParser())
 
 //Signup
 app.post("/signup", async (req, res) => {
@@ -41,7 +44,7 @@ app.post("/login", async (req,res) => {
 
     try {
 
-    const user =await User.findOne({emailId})
+    const user = await User.findOne({emailId})
 
     if(!user) {
         throw new Error("Invalid Credentials")
@@ -53,12 +56,45 @@ app.post("/login", async (req,res) => {
         throw new Error("Invalid Credentials")
     }
 
+    const token = await jwt.sign({_id : user._id }, "Ankit@132")
+    console.log(token)
+    
+    res.cookie("token", token)
+    
     res.send("Login successfully")
+
 } 
 catch(err) {
     res.status(401).send("Something went wrong " + err.message)
 }
 })
+
+app.get("/profile", async (req,res) => { 
+    try {
+         const {token} = req.cookies
+         
+         if(!token) {
+            throw new Error("Invalid Token")
+         }
+
+         const decodedMessage = await jwt.verify(token ,"Ankit@132")
+
+         const id = decodedMessage._id
+         
+         const user = await User.findById({_id : id})
+
+         if(!user) {
+            throw new Error("User doesn't exist")
+         }
+         
+         res.send(user)
+    }
+    catch(err) {
+        res.status(401).send("Something went wrong : " + err.message)
+    }
+    
+})
+
 
 //Get one User from DB using email
 app.get("/user",async (req,res) => {
