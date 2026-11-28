@@ -70,7 +70,12 @@ S02 EP03
 - validate data in signup API
 - install bcrypt
 - Create a passwordHash using bcrypt and save user password
+- create login api 
+- validate login and compare password
 
-
-
-
+- Install cookie-parser
+- just send a dummy cookie to user
+- Create GET/profile API and check if you get the cookie back
+- install jsonwebtoken
+- In login API, after email and password validation, create a JWT token and send it to user id
+- read the cookies inside your profile API and find the logged in USER
